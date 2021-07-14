@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.future94.swallow.alibaba.dubbo.autoconfigure.SwallowAlibabaDubboAutoConfiguration

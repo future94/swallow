@@ -1,0 +1,2 @@
+org.springframework.context.ApplicationListener=\
+  com.future94.swallow.spring.boot.common.banner.SwallowBanner

@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.future94.swallow.web.spring.boot.starter.autoconfigure.SwallowWebAutoConfiguration

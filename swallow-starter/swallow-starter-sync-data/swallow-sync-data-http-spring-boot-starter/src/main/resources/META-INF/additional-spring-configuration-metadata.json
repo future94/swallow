@@ -1,0 +1,46 @@
+{
+  "properties": [
+    {
+      "name": "swallow.sync.http.server-addr",
+      "type": "java.lang.String",
+      "defaultValue": "http://localhost:9507",
+      "description": "sync data center address.",
+      "sourceType": "com.future94.swallow.data.client.http.config.HttpConfig"
+    },
+    {
+      "name": "swallow.sync.http.retry-delay-time",
+      "type": "java.lang.Integer",
+      "defaultValue": 5000,
+      "description": "HTTP long rotation fail retry delay time in milliseconds.",
+      "sourceType": "com.future94.swallow.data.client.http.config.HttpConfig"
+    },
+    {
+      "name": "swallow.sync.http.fail-delay-time",
+      "type": "java.lang.Integer",
+      "defaultValue": 180,
+      "description": "HTTP long rotation retry fail delay time in seconds.",
+      "sourceType": "com.future94.swallow.data.client.http.config.HttpConfig"
+    },
+    {
+      "name": "swallow.sync.http.connection-timeout",
+      "type": "java.lang.Integer",
+      "defaultValue": 3000,
+      "description": "Set the http connect timeout in milliseconds.",
+      "sourceType": "com.future94.swallow.data.client.http.config.HttpConfig"
+    },
+    {
+      "name": "swallow.sync.http.read-timeout",
+      "type": "java.lang.Integer",
+      "defaultValue": 90000,
+      "description": "Set the http read timeout in milliseconds.",
+      "sourceType": "com.future94.swallow.data.client.http.config.HttpConfig"
+    },
+    {
+      "name": "swallow.sync.http.max-retry",
+      "type": "java.lang.Integer",
+      "defaultValue": 3,
+      "description": "Number of retries failed in HTTP long rotation.",
+      "sourceType": "com.future94.swallow.data.client.http.config.HttpConfig"
+    }
+  ]
+}

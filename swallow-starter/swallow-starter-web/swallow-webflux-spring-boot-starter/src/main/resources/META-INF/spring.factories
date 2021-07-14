@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.future94.swallow.webflux.spring.boot.starter.autoconfigure.SwallowWebFluxAutoConfiguration

@@ -1,0 +1,25 @@
+{
+  "properties": [
+    {
+      "name": "swallow.server.app-name",
+      "type": "java.lang.String",
+      "defaultValue": "spring.application.name",
+      "description": "app name.",
+      "sourceType": "com.future94.swallow.common.dto.ServerConfig"
+    },
+    {
+      "name": "swallow.server.context-path",
+      "type": "java.lang.String",
+      "defaultValue": "",
+      "description": "request url context path.",
+      "sourceType": "com.future94.swallow.common.dto.ServerConfig"
+    },
+    {
+      "name": "swallow.server.server-list",
+      "type": "java.util.List<java.lang.String>",
+      "defaultValue": "http://localhost:9507",
+      "description": "sync data center address.",
+      "sourceType": "com.future94.swallow.common.dto.ServerConfig"
+    }
+  ]
+}
