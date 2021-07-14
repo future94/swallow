@@ -7,7 +7,7 @@
 springboot 用户引入如下包
 ```xml
 <groupId>com.future94</groupId>
-<artifactId>swallow-starter-client-apache-dubbo</artifactId>
+<artifactId>swallow-client-apache-dubbo-starter</artifactId>
 <version>${latest.version}</version>
 ```
 
@@ -17,7 +17,7 @@ springboot 用户引入如下包
 springboot 用户引入如下包
 ```xml
 <groupId>com.future94</groupId>
-<artifactId>swallow-starter-client-alibaba-dubbo</artifactId>
+<artifactId>swallow-client-alibaba-dubbo-starter</artifactId>
 <version>${latest.version}</version>
 ```
 
