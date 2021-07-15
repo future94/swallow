@@ -85,6 +85,7 @@ public class ReferencePathCache {
 
     /**
      * 作废
+     * @param path request uri.
      */
     public static void invalidate(String path) {
         GENERIC_CACHE.invalidate(path);

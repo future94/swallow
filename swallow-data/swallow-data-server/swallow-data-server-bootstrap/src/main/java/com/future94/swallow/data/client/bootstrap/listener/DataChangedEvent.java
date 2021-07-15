@@ -19,6 +19,7 @@ public class DataChangedEvent extends ApplicationEvent {
      *
      * @param source the object on which the event initially occurred or with
      *               which the event is associated (never {@code null})
+     * @param eventType DataEventType
      */
     public DataChangedEvent(List<?> source, DataEventTypeEnum eventType) {
         super(source);
