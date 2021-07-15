@@ -24,6 +24,7 @@
         <module>swallow-web</module>
         <module>swallow-data</module>
         <module>swallow-framework</module>
+        <module>swallow-examples</module>
     </modules>
 
 

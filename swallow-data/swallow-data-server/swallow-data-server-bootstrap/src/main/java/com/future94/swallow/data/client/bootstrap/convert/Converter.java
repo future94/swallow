@@ -18,4 +18,6 @@ public interface Converter {
     MetaDataRegisterDto toDto(MetaData metaData);
 
     List<MetaDataRegisterDto> toDto(List<MetaData> metaDataList);
+
+    MetaData toEntity(MetaDataRegisterDto registerDto);
 }

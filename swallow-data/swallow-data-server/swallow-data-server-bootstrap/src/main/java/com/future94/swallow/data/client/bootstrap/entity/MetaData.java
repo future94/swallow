@@ -23,6 +23,8 @@ public class MetaData {
 
     private String appName;
 
+    private String contextPath;
+
     private String path;
 
     private String pathDesc;

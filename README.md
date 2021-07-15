@@ -65,14 +65,14 @@ spring webflux 用户引入下面包
 apache dubbo 用户引入下面包
 ```xml
 <groupId>com.future94</groupId>
-<artifactId>swallow-apache-dubbo-spring-boot-starter</artifactId>
+<artifactId>swallow-apache-dubbo-generic-spring-boot-starter</artifactId>
 <version>${latest.version}</version>
 ```
 
 alibaba dubbo 用户引入下面包
 ```xml
 <groupId>com.future94</groupId>
-<artifactId>swallow-alibaba-dubbo-spring-boot-starter</artifactId>
+<artifactId>swallow-alibaba-dubbo-generic-spring-boot-starter</artifactId>
 <version>${latest.version}</version>
 ```
 

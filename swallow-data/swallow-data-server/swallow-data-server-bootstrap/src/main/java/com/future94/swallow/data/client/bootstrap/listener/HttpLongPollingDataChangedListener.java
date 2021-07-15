@@ -103,6 +103,7 @@ public class HttpLongPollingDataChangedListener implements DataChangedListener, 
         // AsyncContext.setTimeout() does not timeout properly, so you have to control it yourself
         asyncContext.setTimeout(0L);
         // block client's thread.
+        // TODO
         scheduler.execute(new LongPollingClient(asyncContext, clientIp, TimeUnit.SECONDS.toMillis(60)));
     }
 

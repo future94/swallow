@@ -1,0 +1,16 @@
+dubbo:
+    application:
+        name: client-service
+    registry:
+        address: 192.168.1.126:2181
+        protocol: zookeeper
+    protocol:
+        name: dubbo
+        port: -1
+    consumer:
+        check: false
+swallow:
+    server:
+        server-list: http://localhost:9507
+        app-name: test
+        context-path: apache

@@ -30,6 +30,7 @@ public class HttpConfig {
 
     /**
      * Set the http read timeout in milliseconds.
+     * At present, it cannot be less than 60000 milliseconds.
      */
     private Integer readTimeout = 90000;
 

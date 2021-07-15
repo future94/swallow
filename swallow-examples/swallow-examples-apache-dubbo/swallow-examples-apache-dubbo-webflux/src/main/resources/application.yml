@@ -1,0 +1,25 @@
+spring:
+    main:
+        allow-bean-definition-overriding: true
+server:
+    port: 8080
+dubbo:
+    application:
+        name: webflux-service
+    registry:
+        address: 192.168.1.126:2181
+        protocol: zookeeper
+    protocol:
+        name: dubbo
+        port: -1
+    consumer:
+        check: false
+swallow:
+    sync:
+        http:
+            server-addr: http://localhost:9507
+            connection-timeout: 3000
+            fail-delay-time: 180
+            max-retry: 3
+            read-timeout: 90000
+            retry-delay-time: 5000

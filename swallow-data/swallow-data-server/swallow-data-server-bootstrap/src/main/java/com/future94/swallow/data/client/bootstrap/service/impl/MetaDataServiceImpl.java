@@ -35,23 +35,16 @@ public class MetaDataServiceImpl implements MetaDataService {
             MetaData metaData = metaDataRepository.findByAppNameAndPath(registerDto.getAppName(), registerDto.getPath());
             DataEventTypeEnum eventType = DataEventTypeEnum.UPDATE;
             if (metaData == null) {
-                metaData = new MetaData();
                 eventType = DataEventTypeEnum.CREATE;
             }
-            metaData.setAppName(registerDto.getAppName());
-            metaData.setPath(registerDto.getPath());
-            metaData.setPathDesc(registerDto.getPathDesc());
-            metaData.setServiceName(registerDto.getServiceName());
-            metaData.setMethodName(registerDto.getMethodName());
-            metaData.setParameterTypes(registerDto.getParameterTypes());
-            metaData.setRpcExt(registerDto.getRpcExt());
+            metaData = Converter.INSTANCE.toEntity(registerDto);
             metaData.setCreateTime(LocalDateTime.now());
             metaData.setUpdateTime(LocalDateTime.now());
             metaDataRepository.save(metaData);
             eventPublisher.publishEvent(new DataChangedEvent(Collections.singletonList(metaData), eventType));
             return "success";
         } catch (Exception e) {
-            log.error("更新metadata失败, 数据为:{}", new Gson().toJson(registerDto), e);
+            log.error("update metadata fail, data:{}", new Gson().toJson(registerDto), e);
             return "error";
         }
     }

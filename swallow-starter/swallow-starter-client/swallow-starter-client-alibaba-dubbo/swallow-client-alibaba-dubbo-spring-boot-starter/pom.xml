@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>swallow-alibaba-dubbo-spring-boot-starter</artifactId>
+    <artifactId>swallow-client-alibaba-dubbo-spring-boot-starter</artifactId>
 
     <dependencies>
         <dependency>
