@@ -85,6 +85,12 @@ http 长轮训方式引入下面包
 <version>${latest.version}</version>
 ```
 
+zookeeper 方式引入下面包
+```xml
+<groupId>com.future94</groupId>
+<artifactId>swallow-sync-data-zookeeper-spring-boot-starter</artifactId>
+<version>${latest.version}</version>
+```
 
 ### 自定义返回
 重写com.future94.swallow.common.dto.SwallowResponse接口

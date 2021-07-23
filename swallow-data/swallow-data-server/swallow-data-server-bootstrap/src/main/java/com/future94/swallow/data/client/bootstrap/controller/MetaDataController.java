@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author weilai
  */
 @RestController
-@RequestMapping("/register")
+@RequestMapping("/register/metaData")
 public class MetaDataController {
 
     private final MetaDataService metaDataService;
@@ -20,8 +20,13 @@ public class MetaDataController {
         this.metaDataService = metaDataService;
     }
 
-    @PostMapping("/metaData")
-    public String metaData(@RequestBody MetaDataRegisterDto registerDto) {
+    @PostMapping("/save")
+    public String save(@RequestBody MetaDataRegisterDto registerDto) {
         return metaDataService.save(registerDto);
+    }
+
+    @PostMapping("/delete")
+    public String delete(Integer id) {
+        return metaDataService.delete(id);
     }
 }

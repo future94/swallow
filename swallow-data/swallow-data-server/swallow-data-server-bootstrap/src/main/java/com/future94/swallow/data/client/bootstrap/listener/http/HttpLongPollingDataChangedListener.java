@@ -1,15 +1,16 @@
-package com.future94.swallow.data.client.bootstrap.listener;
+package com.future94.swallow.data.client.bootstrap.listener.http;
 
+import com.future94.swallow.common.constants.StatusConstants;
 import com.future94.swallow.common.dto.ConfigData;
-import com.future94.swallow.common.dto.SwallowCommonResponse;
 import com.future94.swallow.common.dto.MetaDataRegisterDto;
+import com.future94.swallow.common.dto.SwallowCommonResponse;
 import com.future94.swallow.common.enums.DataEventTypeEnum;
 import com.future94.swallow.common.exception.SwallowException;
 import com.future94.swallow.common.thread.SwallowThreadFactory;
 import com.future94.swallow.common.utils.GsonUtils;
 import com.future94.swallow.common.utils.Md5Utils;
 import com.future94.swallow.data.client.bootstrap.config.HttpSyncProperties;
-import com.future94.swallow.data.client.bootstrap.entity.MetaData;
+import com.future94.swallow.data.client.bootstrap.listener.DataChangedListener;
 import com.future94.swallow.data.client.bootstrap.service.MetaDataService;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -80,7 +81,7 @@ public class HttpLongPollingDataChangedListener implements DataChangedListener, 
     }
 
     @Override
-    public void onMetaDataChanged(List<MetaData> changed, DataEventTypeEnum eventType) {
+    public void onMetaDataChanged(List<MetaDataRegisterDto> changed, DataEventTypeEnum eventType) {
         if (CollectionUtils.isEmpty(changed)) {
             return;
         }
@@ -144,7 +145,7 @@ public class HttpLongPollingDataChangedListener implements DataChangedListener, 
             response.setHeader("Cache-Control", "no-cache,no-store");
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().println(GsonUtils.getInstance().toJson(SwallowCommonResponse.success("success", data)));
+            response.getWriter().println(GsonUtils.getInstance().toJson(SwallowCommonResponse.success(StatusConstants.SUCCESS, data)));
         } catch (IOException ex) {
             log.error("Sending response failed.", ex);
         }

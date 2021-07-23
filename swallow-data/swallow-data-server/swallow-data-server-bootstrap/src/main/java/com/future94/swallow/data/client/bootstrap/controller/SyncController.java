@@ -1,7 +1,7 @@
 package com.future94.swallow.data.client.bootstrap.controller;
 
 import com.future94.swallow.common.dto.SwallowCommonResponse;
-import com.future94.swallow.data.client.bootstrap.listener.HttpLongPollingDataChangedListener;
+import com.future94.swallow.data.client.bootstrap.listener.http.HttpLongPollingDataChangedListener;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

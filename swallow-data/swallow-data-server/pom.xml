@@ -12,9 +12,7 @@
     <artifactId>swallow-data-server</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>swallow-data-server-zookeeper</module>
         <module>swallow-data-server-bootstrap</module>
-        <module>swallow-data-server-http</module>
     </modules>
 
 </project>

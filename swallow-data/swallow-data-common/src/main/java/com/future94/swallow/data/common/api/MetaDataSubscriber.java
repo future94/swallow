@@ -9,7 +9,7 @@ public interface MetaDataSubscriber {
 
     void onSubscribe(MetaDataRegisterDto metaData);
 
-    void unSubscribe(MetaDataRegisterDto metaData);
+    void unSubscribe(String path);
 
     default void refresh() {
     }

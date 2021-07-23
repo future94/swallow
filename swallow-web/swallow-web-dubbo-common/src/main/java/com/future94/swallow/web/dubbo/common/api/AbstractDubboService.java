@@ -1,5 +1,6 @@
 package com.future94.swallow.web.dubbo.common.api;
 
+import com.future94.swallow.common.constants.StatusConstants;
 import com.future94.swallow.web.dubbo.common.constants.Constants;
 import com.future94.swallow.web.dubbo.common.utils.HttpParamConverter;
 import com.future94.swallow.web.dubbo.common.utils.ResponseUtils;
@@ -45,10 +46,10 @@ public abstract class AbstractDubboService implements DubboService{
                 return ResponseUtils.result(exchange, error);
             }
             if (Objects.isNull(dubboResult)) {
-                Object error = ResponseUtils.error(500, "error", null);
+                Object error = ResponseUtils.error(500, StatusConstants.ERROR, null);
                 return ResponseUtils.result(exchange, error);
             }
-            Object success = ResponseUtils.success(200, "success", ResponseUtils.removeClass(dubboResult));
+            Object success = ResponseUtils.success(200, StatusConstants.SUCCESS, ResponseUtils.removeClass(dubboResult));
             return ResponseUtils.result(exchange, success);
         });
     }

@@ -1,0 +1,39 @@
+{
+  "properties": [
+    {
+      "name": "swallow.sync.zookeeper.zk-servers",
+      "type": "java.lang.String",
+      "defaultValue": "127.0.0.1:2181",
+      "description": "sync data center address.",
+      "sourceType": "com.future94.swallow.sync.data.zookeeper.autoconfigure.ZookeeperProperties"
+    },
+    {
+      "name": "swallow.sync.zookeeper.session-timeout",
+      "type": "java.lang.Integer",
+      "defaultValue": 30000,
+      "description": "zookeeper session timeout in milliseconds.",
+      "sourceType": "com.future94.swallow.sync.data.zookeeper.autoconfigure.ZookeeperProperties"
+    },
+    {
+      "name": "swallow.sync.zookeeper.connection-timeout",
+      "type": "java.lang.String",
+      "defaultValue": "Integer.MAX_VALUE",
+      "description": "zookeeper connection timeout in milliseconds.",
+      "sourceType": "com.future94.swallow.sync.data.zookeeper.autoconfigure.ZookeeperProperties"
+    },
+    {
+      "name": "swallow.sync.zookeeper.zk-serializer",
+      "type": "java.lang.String",
+      "defaultValue": "org.I0Itec.zkclient.serialize.SerializableSerializer",
+      "description": "zookeeper serializer.",
+      "sourceType": "com.future94.swallow.sync.data.zookeeper.autoconfigure.ZookeeperProperties"
+    },
+    {
+      "name": "swallow.sync.zookeeper.operation-retry-timeout",
+      "type": "java.lang.Integer",
+      "defaultValue": -1,
+      "description": "zookeeper operation retry timeout in milliseconds.",
+      "sourceType": "com.future94.swallow.sync.data.zookeeper.autoconfigure.ZookeeperProperties"
+    }
+  ]
+}

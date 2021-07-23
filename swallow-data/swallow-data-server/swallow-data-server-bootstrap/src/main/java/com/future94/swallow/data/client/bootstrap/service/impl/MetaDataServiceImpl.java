@@ -1,9 +1,11 @@
 package com.future94.swallow.data.client.bootstrap.service.impl;
 
+import com.future94.swallow.common.constants.StatusConstants;
 import com.future94.swallow.common.dto.MetaDataRegisterDto;
 import com.future94.swallow.common.enums.DataEventTypeEnum;
 import com.future94.swallow.data.client.bootstrap.convert.Converter;
 import com.future94.swallow.data.client.bootstrap.entity.MetaData;
+import com.future94.swallow.data.client.bootstrap.listener.DataChangeEventMulticaster;
 import com.future94.swallow.data.client.bootstrap.listener.DataChangedEvent;
 import com.future94.swallow.data.client.bootstrap.repo.MetaDataRepository;
 import com.future94.swallow.data.client.bootstrap.service.MetaDataService;
@@ -27,30 +29,46 @@ public class MetaDataServiceImpl implements MetaDataService {
 
     private final MetaDataRepository metaDataRepository;
 
-    private final ApplicationEventPublisher eventPublisher;
+    private final DataChangeEventMulticaster eventPublisher;
 
     @Override
     public String save(MetaDataRegisterDto registerDto) {
         try {
             MetaData metaData = metaDataRepository.findByAppNameAndPath(registerDto.getAppName(), registerDto.getPath());
+            MetaData record = Converter.INSTANCE.toEntity(registerDto);
             DataEventTypeEnum eventType = DataEventTypeEnum.UPDATE;
             if (metaData == null) {
                 eventType = DataEventTypeEnum.CREATE;
+            } else {
+                record.setId(metaData.getId());
             }
-            metaData = Converter.INSTANCE.toEntity(registerDto);
-            metaData.setCreateTime(LocalDateTime.now());
-            metaData.setUpdateTime(LocalDateTime.now());
-            metaDataRepository.save(metaData);
-            eventPublisher.publishEvent(new DataChangedEvent(Collections.singletonList(metaData), eventType));
-            return "success";
+            record.setCreateTime(LocalDateTime.now());
+            record.setUpdateTime(LocalDateTime.now());
+            metaDataRepository.save(record);
+            eventPublisher.publishEvent(record, eventType);
+            return StatusConstants.SUCCESS;
         } catch (Exception e) {
-            log.error("update metadata fail, data:{}", new Gson().toJson(registerDto), e);
-            return "error";
+            log.error("update metadata error, data:{}", new Gson().toJson(registerDto), e);
+            return StatusConstants.ERROR;
         }
     }
 
     @Override
     public List<MetaDataRegisterDto> findAll() {
         return Converter.INSTANCE.toDto(metaDataRepository.findAll());
+    }
+
+    @Override
+    public String delete(Integer id) {
+        try {
+            metaDataRepository.findById(id).ifPresent(metaData -> {
+                metaDataRepository.delete(metaData);
+                eventPublisher.publishEvent(metaData, DataEventTypeEnum.DELETE);
+            });
+            return StatusConstants.SUCCESS;
+        } catch (Exception e) {
+            log.error("delete metadata error, metadataId:{}", id, e);
+            return StatusConstants.ERROR;
+        }
     }
 }

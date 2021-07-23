@@ -35,8 +35,8 @@ public class ApacheDubboMetaDataSubscriber implements MetaDataSubscriber {
     }
 
     @Override
-    public void unSubscribe(MetaDataRegisterDto metaData) {
-        ReferencePathCache.invalidate(metaData.getPath());
-        META_DATA.remove(metaData.getPath());
+    public void unSubscribe(String path) {
+        ReferencePathCache.invalidate(path);
+        META_DATA.remove(path);
     }
 }

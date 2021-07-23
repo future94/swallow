@@ -11,4 +11,6 @@ public interface MetaDataService {
     String save(MetaDataRegisterDto registerDto);
 
     List<MetaDataRegisterDto> findAll();
+
+    String delete(Integer id);
 }

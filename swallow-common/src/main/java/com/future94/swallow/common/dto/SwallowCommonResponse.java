@@ -1,5 +1,6 @@
 package com.future94.swallow.common.dto;
 
+import com.future94.swallow.common.constants.StatusConstants;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,11 +19,11 @@ public class SwallowCommonResponse implements Serializable {
 
     private static final int SUCCESS = 200;
 
-    private static final String SUCCESS_MSG = "success";
+    private static final String SUCCESS_MSG = StatusConstants.SUCCESS;
 
     private static final int ERROR = 500;
 
-    private static final String ERROR_MSG = "error";
+    private static final String ERROR_MSG = StatusConstants.ERROR;
 
     private Integer code;
 

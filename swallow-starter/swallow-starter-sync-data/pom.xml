@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>swallow-sync-data-http-spring-boot-starter</module>
+        <module>swallow-sync-data-zookeeper-spring-boot-starter</module>
     </modules>
 
 

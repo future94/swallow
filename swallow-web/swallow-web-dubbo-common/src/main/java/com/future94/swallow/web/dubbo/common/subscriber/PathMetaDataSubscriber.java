@@ -15,7 +15,7 @@ public class PathMetaDataSubscriber implements MetaDataSubscriber {
     }
 
     @Override
-    public void unSubscribe(MetaDataRegisterDto metaData) {
-        PathMetaDataCache.remove(metaData);
+    public void unSubscribe(String path) {
+        PathMetaDataCache.remove(path);
     }
 }

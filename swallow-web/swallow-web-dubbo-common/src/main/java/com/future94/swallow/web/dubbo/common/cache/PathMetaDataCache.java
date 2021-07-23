@@ -16,8 +16,8 @@ public class PathMetaDataCache {
         PATH_META_DATA_CACHE.put(dataRegisterDto.getPath(), dataRegisterDto);
     }
 
-    public static void remove(MetaDataRegisterDto dataRegisterDto) {
-        PATH_META_DATA_CACHE.remove(dataRegisterDto.getPath());
+    public static void remove(String path) {
+        PATH_META_DATA_CACHE.remove(path);
     }
 
     public static MetaDataRegisterDto get(String path) {

@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>swallow-data-client-http</module>
+        <module>swallow-data-client-zookeeper</module>
     </modules>
     <dependencies>
         <dependency>

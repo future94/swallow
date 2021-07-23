@@ -27,6 +27,11 @@
             <artifactId>swallow-sync-data-http-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.future94</groupId>-->
+<!--            <artifactId>swallow-sync-data-zookeeper-spring-boot-starter</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>

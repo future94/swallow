@@ -22,9 +22,14 @@
             <artifactId>swallow-apache-dubbo-generic-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.future94</groupId>-->
+<!--            <artifactId>swallow-sync-data-http-spring-boot-starter</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.future94</groupId>
-            <artifactId>swallow-sync-data-http-spring-boot-starter</artifactId>
+            <artifactId>swallow-sync-data-zookeeper-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
