@@ -16,5 +16,10 @@ swallow:
         http:
             enabled: false
         zookeeper:
-            enabled: true
+            enabled: false
             zk-servers: 192.168.1.126:2181
+        nacos:
+            enabled: true
+            server-addr: http://192.168.1.205:8848
+            username: nacos
+            password: nacos

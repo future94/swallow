@@ -4,7 +4,7 @@ import com.future94.swallow.common.dto.MetaDataRegisterDto;
 import com.future94.swallow.common.exception.SwallowException;
 import com.future94.swallow.common.utils.GsonUtils;
 import com.future94.swallow.web.apache.dubbo.cache.ReferencePathCache;
-import com.future94.swallow.web.dubbo.common.cache.PathMetaDataCache;
+import com.future94.swallow.common.cache.PathMetaDataCache;
 import com.future94.swallow.web.dubbo.common.constants.Constants;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

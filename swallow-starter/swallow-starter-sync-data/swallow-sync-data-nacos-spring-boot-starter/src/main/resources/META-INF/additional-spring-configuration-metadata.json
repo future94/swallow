@@ -1,0 +1,96 @@
+{
+  "properties": [
+    {
+      "name": "swallow.sync.nacos.server-addr",
+      "type": "java.lang.String",
+      "defaultValue": "127.0.0.1:8848",
+      "description": "sync data center address.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.username",
+      "type": "java.lang.String",
+      "description": "the nacos authentication username.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.password",
+      "type": "java.lang.String",
+      "description": "the nacos authentication password.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.encode",
+      "type": "java.lang.String",
+      "description": "encode for nacos config content.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.namespace",
+      "type": "java.lang.String",
+      "description": "namespace, separation configuration of different environments.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.group",
+      "type": "java.lang.String",
+      "defaultValue": "DEFAULT_GROUP",
+      "description": "nacos config group, group is config data meta info.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.access-key",
+      "type": "java.lang.String",
+      "description": "access key for namespace.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.secret-key",
+      "type": "java.lang.String",
+      "description": "secret key for namespace.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.cluster-name",
+      "type": "java.lang.String",
+      "description": "nacos config cluster name.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.max-retry",
+      "type": "java.lang.String",
+      "description": "nacos maximum number of tolerable server reconnection errors.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.config-long-poll-timeout",
+      "type": "java.lang.String",
+      "description": "nacos get config long poll timeout.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.config-retry-time",
+      "type": "java.lang.String",
+      "description": "nacos get config failure retry time.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.timeout-ms",
+      "type": "java.lang.String",
+      "defaultValue": "3000",
+      "description": "nacos read config timeout.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.endpoint",
+      "type": "java.lang.String",
+      "description": "endpoint for Nacos, the domain name of a service, through which the server address can be dynamically obtained.",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    },
+    {
+      "name": "swallow.sync.nacos.enable-remote-sync-config",
+      "type": "java.lang.String",
+      "sourceType": "com.future94.swallow.sync.data.nacos.autoconfigure.NacosProperties"
+    }
+  ]
+}

@@ -2,7 +2,7 @@ package com.future94.swallow.web.dubbo.common.subscriber;
 
 import com.future94.swallow.common.dto.MetaDataRegisterDto;
 import com.future94.swallow.data.common.api.MetaDataSubscriber;
-import com.future94.swallow.web.dubbo.common.cache.PathMetaDataCache;
+import com.future94.swallow.common.cache.PathMetaDataCache;
 
 /**
  * @author weilai

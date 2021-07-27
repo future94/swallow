@@ -1,8 +1,11 @@
-package com.future94.swallow.web.dubbo.common.cache;
+package com.future94.swallow.common.cache;
 
 import com.future94.swallow.common.dto.MetaDataRegisterDto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -22,5 +25,21 @@ public class PathMetaDataCache {
 
     public static MetaDataRegisterDto get(String path) {
         return PATH_META_DATA_CACHE.get(path);
+    }
+
+    public static boolean hasPath() {
+        return !PATH_META_DATA_CACHE.isEmpty();
+    }
+
+    public static boolean hasPath(String path) {
+        return PATH_META_DATA_CACHE.containsKey(path);
+    }
+
+    public static Set<String> getPathSet() {
+        return PATH_META_DATA_CACHE.keySet();
+    }
+
+    public static List<MetaDataRegisterDto> getMetadataList() {
+        return new ArrayList<>(PATH_META_DATA_CACHE.values());
     }
 }

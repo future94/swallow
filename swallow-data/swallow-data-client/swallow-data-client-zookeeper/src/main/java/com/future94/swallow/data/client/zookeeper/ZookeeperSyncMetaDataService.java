@@ -11,6 +11,8 @@ import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
 import org.springframework.util.CollectionUtils;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
@@ -22,18 +24,18 @@ import java.util.stream.Collectors;
  * @author weilai
  */
 @Slf4j
-public class ZookeeperSyncMetaDataService implements SyncMetaDataService {
+public class ZookeeperSyncMetaDataService implements SyncMetaDataService, Closeable {
 
     private final ZkClient zkClient;
 
     private final List<MetaDataSubscriber> metaDataSubscriberList;
 
-    private List<String> alreadyPathChildren;
+    private List<String> alreadyPathChildrenCache;
 
     public ZookeeperSyncMetaDataService(ZkClient zkClient, List<MetaDataSubscriber> metaDataSubscriberList) {
         this.zkClient = zkClient;
         this.metaDataSubscriberList = metaDataSubscriberList;
-        this.alreadyPathChildren = new LinkedList<>();
+        this.alreadyPathChildrenCache = new LinkedList<>();
         this.start();
     }
 
@@ -48,7 +50,7 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService {
                 subscribeMetaDataChanges(realPath);
             });
         }
-        alreadyPathChildren.addAll(childrenList);
+        alreadyPathChildrenCache.addAll(childrenList);
         subscribeChildChanges();
     }
 
@@ -66,7 +68,7 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService {
                     MetaDataRegisterDto metaData = null == zkClient.readData(realPath) ? null
                             : GsonUtils.getInstance().fromJson((String) zkClient.readData(realPath), MetaDataRegisterDto.class);
                     cacheMetaData(metaData);
-                    alreadyPathChildren.add(children);
+                    alreadyPathChildrenCache.add(children);
                     return realPath;
                 }).forEach(this::subscribeMetaDataChanges);
             }
@@ -79,10 +81,10 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService {
      * @return need add subscribe path
      */
     private List<String> needAddSubscribePath(final List<String> currentChildren) {
-        if (CollectionUtils.isEmpty(alreadyPathChildren)) {
+        if (CollectionUtils.isEmpty(alreadyPathChildrenCache)) {
             return currentChildren;
         }
-        return currentChildren.stream().filter(current -> alreadyPathChildren.stream().noneMatch(current::equals)).collect(Collectors.toList());
+        return currentChildren.stream().filter(current -> alreadyPathChildrenCache.stream().noneMatch(current::equals)).collect(Collectors.toList());
     }
 
     /**
@@ -101,7 +103,7 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService {
             public void handleDataDeleted(final String dataPath) {
                 final String realPath = dataPath.substring(SyncDataPathConstant.ZOOKEEPER_METADATA_PATH.length() + 1);
                 unCacheMetaData(URLDecoder.decode(realPath, StandardCharsets.UTF_8.name()));
-                alreadyPathChildren.remove(realPath);
+                alreadyPathChildrenCache.remove(realPath);
             }
         });
     }
@@ -119,5 +121,12 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService {
             zkClient.createPersistent(SyncDataPathConstant.ZOOKEEPER_METADATA_PATH, true);
         }
         return zkClient.getChildren(SyncDataPathConstant.ZOOKEEPER_METADATA_PATH);
+    }
+
+    @Override
+    public void close() throws IOException {
+        if (zkClient != null) {
+            zkClient.close();
+        }
     }
 }

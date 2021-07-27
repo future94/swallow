@@ -1,7 +1,7 @@
 package com.future94.swallow.spring.boot.web.handler;
 
 import com.future94.swallow.web.dubbo.common.api.DubboService;
-import com.future94.swallow.web.dubbo.common.cache.PathMetaDataCache;
+import com.future94.swallow.common.cache.PathMetaDataCache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 

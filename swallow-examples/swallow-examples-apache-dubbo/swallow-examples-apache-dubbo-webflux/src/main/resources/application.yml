@@ -16,8 +16,12 @@ dubbo:
         check: false
 swallow:
     sync:
-        zookeeper:
-            zk-servers: 192.168.1.126:2181
+        nacos:
+            server-addr: http://192.168.1.205:8848
+            username: nacos
+            password: nacos
+#        zookeeper:
+#            zk-servers: 192.168.1.126:2181
 #        http:
 #            server-addr: http://localhost:9507
 #            connection-timeout: 3000

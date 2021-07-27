@@ -64,12 +64,18 @@
         <disruptor.version>3.4.4</disruptor.version>
         <guava.version>30.1.1-jre</guava.version>
         <zkclient.version>0.11</zkclient.version>
+        <nacos-client.version>2.0.1</nacos-client.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos-client.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.101tec</groupId>
                 <artifactId>zkclient</artifactId>
