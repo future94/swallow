@@ -92,5 +92,12 @@ zookeeper 方式引入下面包
 <version>${latest.version}</version>
 ```
 
+nacos 方式引入下面包
+```xml
+<groupId>com.future94</groupId>
+<artifactId>swallow-sync-data-nacos-spring-boot-starter</artifactId>
+<version>${latest.version}</version>
+```
+
 ### 自定义返回
 重写com.future94.swallow.common.dto.SwallowResponse接口
