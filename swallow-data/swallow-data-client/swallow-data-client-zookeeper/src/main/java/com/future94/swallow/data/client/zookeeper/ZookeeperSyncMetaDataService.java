@@ -1,5 +1,6 @@
 package com.future94.swallow.data.client.zookeeper;
 
+import com.future94.swallow.common.cache.PathMetaDataCache;
 import com.future94.swallow.common.constants.SyncDataPathConstant;
 import com.future94.swallow.common.dto.MetaDataRegisterDto;
 import com.future94.swallow.common.utils.GsonUtils;
@@ -15,7 +16,6 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,12 +30,9 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService, Closea
 
     private final List<MetaDataSubscriber> metaDataSubscriberList;
 
-    private List<String> alreadyPathChildrenCache;
-
     public ZookeeperSyncMetaDataService(ZkClient zkClient, List<MetaDataSubscriber> metaDataSubscriberList) {
         this.zkClient = zkClient;
         this.metaDataSubscriberList = metaDataSubscriberList;
-        this.alreadyPathChildrenCache = new LinkedList<>();
         this.start();
     }
 
@@ -50,7 +47,6 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService, Closea
                 subscribeMetaDataChanges(realPath);
             });
         }
-        alreadyPathChildrenCache.addAll(childrenList);
         subscribeChildChanges();
     }
 
@@ -68,7 +64,6 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService, Closea
                     MetaDataRegisterDto metaData = null == zkClient.readData(realPath) ? null
                             : GsonUtils.getInstance().fromJson((String) zkClient.readData(realPath), MetaDataRegisterDto.class);
                     cacheMetaData(metaData);
-                    alreadyPathChildrenCache.add(children);
                     return realPath;
                 }).forEach(this::subscribeMetaDataChanges);
             }
@@ -81,10 +76,10 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService, Closea
      * @return need add subscribe path
      */
     private List<String> needAddSubscribePath(final List<String> currentChildren) {
-        if (CollectionUtils.isEmpty(alreadyPathChildrenCache)) {
+        if (!PathMetaDataCache.hasPath()) {
             return currentChildren;
         }
-        return currentChildren.stream().filter(current -> alreadyPathChildrenCache.stream().noneMatch(current::equals)).collect(Collectors.toList());
+        return currentChildren.stream().filter(current -> !PathMetaDataCache.hasPath(current)).collect(Collectors.toList());
     }
 
     /**
@@ -103,7 +98,6 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService, Closea
             public void handleDataDeleted(final String dataPath) {
                 final String realPath = dataPath.substring(SyncDataPathConstant.ZOOKEEPER_METADATA_PATH.length() + 1);
                 unCacheMetaData(URLDecoder.decode(realPath, StandardCharsets.UTF_8.name()));
-                alreadyPathChildrenCache.remove(realPath);
             }
         });
     }
