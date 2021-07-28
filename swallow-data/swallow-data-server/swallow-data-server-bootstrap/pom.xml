@@ -72,7 +72,7 @@
 
     <build>
         <defaultGoal>compile</defaultGoal>
-        <finalName>passport-service</finalName>
+        <finalName>swallow-data-center</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
