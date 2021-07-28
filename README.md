@@ -1,5 +1,9 @@
 ## Quick Start
 
+### data center
+说明
+- 编译swallow-data-center-bootstrap模块并启动jar.
+- 默认使用H2数据库(spring.profiles.active=h2)，如果使用Mysql数据库，更改spring.profiles.active=mysql
 ### dubbo client
 
 #### apache dubbo 
