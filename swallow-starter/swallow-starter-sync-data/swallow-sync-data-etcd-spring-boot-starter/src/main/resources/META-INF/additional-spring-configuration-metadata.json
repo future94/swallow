@@ -1,0 +1,11 @@
+{
+  "properties": [
+    {
+      "name": "swallow.sync.etcd.endpoints",
+      "type": "java.lang.String",
+      "defaultValue": "127.0.0.1:2379",
+      "description": "sync data center address.",
+      "sourceType": "com.future94.swallow.sync.data.etcd.autoconfigure.EtcdProperties"
+    }
+  ]
+}

@@ -13,7 +13,10 @@ swallow:
             enabled: false
             zk-servers: 192.168.1.126:2181
         nacos:
-            enabled: true
+            enabled: false
             server-addr: http://192.168.1.205:8848
             username: nacos
             password: nacos
+        etcd:
+            enabled: true
+            endpoints: http://localhost:2379

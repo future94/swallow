@@ -61,8 +61,7 @@ public class ZookeeperSyncMetaDataService implements SyncMetaDataService, Closea
                 final List<String> addSubscribePath = needAddSubscribePath(currentChildren);
                 addSubscribePath.stream().map(children -> {
                     final String realPath = parentPath + SyncDataPathConstant.SEPARATOR + children;
-                    MetaDataRegisterDto metaData = null == zkClient.readData(realPath) ? null
-                            : GsonUtils.getInstance().fromJson((String) zkClient.readData(realPath), MetaDataRegisterDto.class);
+                    MetaDataRegisterDto metaData = null == zkClient.readData(realPath) ? null : GsonUtils.getInstance().fromJson((String) zkClient.readData(realPath), MetaDataRegisterDto.class);
                     cacheMetaData(metaData);
                     return realPath;
                 }).forEach(this::subscribeMetaDataChanges);

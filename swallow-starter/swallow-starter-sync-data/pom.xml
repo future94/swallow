@@ -15,6 +15,7 @@
         <module>swallow-sync-data-http-spring-boot-starter</module>
         <module>swallow-sync-data-zookeeper-spring-boot-starter</module>
         <module>swallow-sync-data-nacos-spring-boot-starter</module>
+        <module>swallow-sync-data-etcd-spring-boot-starter</module>
     </modules>
 
 

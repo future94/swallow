@@ -5,9 +5,11 @@ import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.future94.swallow.data.client.bootstrap.listener.DataChangeEventMulticaster;
 import com.future94.swallow.data.client.bootstrap.listener.DataChangedListener;
+import com.future94.swallow.data.client.bootstrap.listener.etcd.EtcdDataChangedListener;
 import com.future94.swallow.data.client.bootstrap.listener.http.HttpLongPollingDataChangedListener;
 import com.future94.swallow.data.client.bootstrap.listener.nacos.NacosDataChangedListener;
 import com.future94.swallow.data.client.bootstrap.listener.zookeeper.ZookeeperDataChangedListener;
+import io.etcd.jetcd.Client;
 import org.I0Itec.zkclient.ZkClient;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,6 +127,28 @@ public class DataSyncConfiguration {
         @Autowired
         void setDataChangedListener(DataChangeEventMulticaster multicaster, NacosDataChangedListener nacosDataChangedListener) {
             multicaster.setListeners(nacosDataChangedListener);
+        }
+    }
+
+    @Configuration
+    @ConditionalOnProperty(name = "swallow.sync.etcd.enabled", havingValue = "true")
+    @EnableConfigurationProperties(EtcdSyncProperties.class)
+    static class EtcdListener {
+
+        @Bean
+        public Client etcdClient(EtcdSyncProperties etcdSyncProperties) {
+            return Client.builder().endpoints(etcdSyncProperties.getEndpoints().split(",")).build();
+        }
+
+        @Bean
+        @ConditionalOnMissingBean(EtcdDataChangedListener.class)
+        public EtcdDataChangedListener etcdDataChangedListener(final ObjectProvider<Client> etcdClient) {
+            return new EtcdDataChangedListener(etcdClient.getIfAvailable());
+        }
+
+        @Autowired
+        void setDataChangedListener(DataChangeEventMulticaster multicaster, EtcdDataChangedListener etcdDataChangedListener) {
+            multicaster.setListeners(etcdDataChangedListener);
         }
     }
 

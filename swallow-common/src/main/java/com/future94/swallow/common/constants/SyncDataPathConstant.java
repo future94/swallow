@@ -12,4 +12,6 @@ public interface SyncDataPathConstant {
     String NACOS_METADATA_DATA_ID = "swallow-metadata-json";
 
     String NACOS_DEFAULT_GROUP = "DEFAULT_GROUP";
+
+    String ETCD_METADATA_PATH = "/swallow/metadata";
 }

@@ -67,10 +67,16 @@
         <nacos-client.version>2.0.1</nacos-client.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <jetcd-core.version>0.5.8</jetcd-core.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.etcd</groupId>
+                <artifactId>jetcd-core</artifactId>
+                <version>${jetcd-core.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.alibaba.nacos</groupId>
                 <artifactId>nacos-client</artifactId>

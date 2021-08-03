@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.future94</groupId>
-            <artifactId>swallow-common</artifactId>
+            <artifactId>swallow-data-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -59,14 +59,12 @@
             <artifactId>zkclient</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.future94</groupId>
-            <artifactId>swallow-data-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba.nacos</groupId>
             <artifactId>nacos-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.etcd</groupId>
+            <artifactId>jetcd-core</artifactId>
         </dependency>
     </dependencies>
 
